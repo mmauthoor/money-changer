@@ -1,10 +1,10 @@
 def validate_change(input)
     if input.strip.empty?
-        raise ArgumentError.new("No value provided - program requires an integer.")
+        raise ArgumentError.new("No value provided - program requires a positive integer.")
     end
     
     if input.to_i.zero?
-        raise ArgumentError.new("Incorrect data type - program requires an integer, not a string.")
+        raise ArgumentError.new("Incorrect input - program requires a positive integer.")
     end
 
     # Error will be thrown here if the input is a float/decimal, string or empty string value
