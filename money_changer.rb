@@ -1,20 +1,12 @@
 def validate_change(input)
-    if input.strip.empty?
-        raise ArgumentError.new("No value provided - program requires a positive integer.")
+    begin
+        change = Integer(input)
+        raise ArgumentError.new if change.zero? || change.negative?
+    rescue ArgumentError => exception
+        puts "Unviable input ('#{input}'): program requires a positive integer."
+    else
+        return change 
     end
-    
-    if input.to_i.zero?
-        raise ArgumentError.new("Incorrect input - program requires a positive integer.")
-    end
-
-    # Error will be thrown here if the input is a float/decimal, string or empty string value
-    change = Integer(input)
-
-    if change.negative?
-        raise ArgumentError.new("Negative value provided - program requires a positive integer.")        
-    end
-
-    return change
 end
 
 def calculate_coins(change)
@@ -33,10 +25,7 @@ end
 puts "Enter your change in cents"
 input = gets.chomp
 valid_change = validate_change(input)
-
-if (valid_change)
-    calculate_coins(valid_change)
-end
+calculate_coins(valid_change) if valid_change
 
 
 

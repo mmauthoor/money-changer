@@ -23,12 +23,12 @@ The EMC is written entirely in Ruby and requires no Gem installations. To run th
 - Upon program start, users will be prompted to enter the change in total number of cents. 
 - Once the user has entered the change amount (only positive whole numbers are accepted) and hit the Enter/Return key, the program will calculate and return a summary of the exact coin values and their quantities to provide the correct change to the customer.
 - The program will automatically exit after returning the coin summary. 
-- The program will throw an error if user input is not a positive whole number.
+- The program will print an error message if user input is not a positive whole number. Users must restart the program to input a valid change amount.
 
 ## Approach and assumptions
 - As implied in the examples from the EMC brief, the program calculates the most convenient change for the customer, i.e. the fewest possible coins. It does so by defaulting to the largest possible coin value (that is smaller than the change value) as a divisor of the change value throughout the loop. 
 - In accordance with the single responsibility SOLID principle, the program has been broken into two methods (`validate_change` and `calculate_coins`). This allows for easier unit testing in the future as well. 
 - The correct functioning of this program is contingent on the coin array in the `calculate_coins` method being sorted in descending numeric order. The `coins` array is hard-coded as such, but a reversed sort is also used to preserve the descending order in case changes are made to the array in the future. 
 - The `each` loop in the `calculate_coins` method is acceptable on a small scale but it may be better to use a different method (e.g. binary search) for optimisation if many, many coin values were to be included in the array, to avoid iterating over a long array unnecessarily.
-- Custom error handling has been included to ensure the program only returns the coin summary for valid positive integers (not string characters, floats or negative integers). 
+- Some error handling has been included to ensure the program only returns the coin summary for valid positive integers (not strings, floats or negative integers). 
 
