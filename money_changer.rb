@@ -5,7 +5,7 @@ def validate_change(input)
     rescue ArgumentError => exception
         puts "Unviable input ('#{input}'): program receives positive integers (whole numbers) only."
     else
-        return change 
+        change 
     end
 end
 
