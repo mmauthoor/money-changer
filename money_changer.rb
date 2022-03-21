@@ -3,7 +3,7 @@ def validate_change(input)
         change = Integer(input)
         raise ArgumentError.new if change.zero? || change.negative?
     rescue ArgumentError => exception
-        puts "Unviable input ('#{input}'): program requires a positive integer."
+        puts "Unviable input ('#{input}'): program receives positive integers (whole numbers) only."
     else
         return change 
     end
